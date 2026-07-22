@@ -1,309 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>和敬 (Wakei) | Authentic Yame Matcha</title>
+    <title>和敬 WAKEI MATCHA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --matcha-dark: #2c3e18;
-            --matcha-main: #4a632d;
-            --matcha-light: #82a05d;
-            --bg-color: #faf8f5;
-            --text-main: #333333;
-            --text-light: #666666;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+        
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: #0c0c0c; /* Deep Charcoal/Black */
+            color: #e6e1d6; /* Elegant Cream */
+            font-family: 'Inter', sans-serif;
         }
-
-        header {
-            background-color: var(--matcha-dark);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        h1, h2, h3, h4, .serif {
+            font-family: 'Cormorant Garamond', serif;
         }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .kanji-motif {
-            font-size: 2.5rem;
-            font-family: 'Yu Mincho', 'MS Mincho', serif;
-            color: var(--matcha-light);
-        }
-
-        .hero {
-            position: relative;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.crossroadfukuoka.jp/storage/tourism_attractions/12916/responsive_images/flpM5ESQiUNy4aNcei20kYsOGTrhEdK45gdIVARS__1673_1113.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--matcha-main);
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            font-size: 1.1rem;
-        }
-
-        .btn:hover {
-            background-color: var(--matcha-light);
-        }
-
-        section {
-            padding: 5rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            color: var(--matcha-dark);
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--matcha-main);
-            margin: 15px auto 0;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .content-image {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
-            border-top: 4px solid var(--matcha-light);
-        }
-
-        .benefit-card h3 {
-            color: var(--matcha-main);
-            margin-bottom: 1rem;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-radius: 8px;
+        
+        /* Continuous Marquee Animation */
+        .marquee-container {
             overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            border-top: 1px solid rgba(230, 225, 214, 0.15);
+            border-bottom: 1px solid rgba(230, 225, 214, 0.15);
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        .comparison-table th, .comparison-table td {
-            padding: 1.5rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
+        /* Subtle Image Hover Reveal */
+        .img-reveal {
+            transition: transform 0.7s ease, filter 0.7s ease;
         }
-
-        .comparison-table th {
-            background-color: var(--matcha-main);
-            color: white;
-            font-weight: normal;
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .highlight-col {
-            background-color: rgba(130, 160, 93, 0.1);
-            font-weight: bold;
-            color: var(--matcha-dark);
-        }
-
-        footer {
-            background-color: var(--matcha-dark);
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        .img-reveal:hover {
+            transform: scale(1.03);
+            filter: brightness(1.1);
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-[#4a5d23] selection:text-white">
 
-    <header>
-        <div class="logo">和敬 WAKEI MATCHA</div>
-        <a href="#shop" class="btn" style="padding: 0.5rem 1.5rem;">Shop</a>
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 mix-blend-difference px-6 py-8 flex justify-between items-center text-sm uppercase tracking-widest font-light">
+        <a href="#" class="hover:opacity-70 transition-opacity">和敬 WAKEI</a>
+        <a href="#shop" class="hover:opacity-70 transition-opacity border-b border-transparent hover:border-[#e6e1d6] pb-1">Shop</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen w-full flex flex-col justify-end p-6 md:p-16 pb-24">
+        <!-- Hero Background (Using Matcha Powder Image as dramatic backdrop) -->
+        <div class="absolute inset-0 z-[-1] overflow-hidden">
+            <div class="absolute inset-0 bg-black/50 z-10"></div> <!-- Dark Overlay -->
+            <img src="https://www.yame-tea.jp/images/material/Matcha00026.jpeg" alt="Yame Matcha Powder" class="w-full h-full object-cover object-center opacity-70">
+        </div>
+
+        <div class="z-10 max-w-4xl">
+            <span class="block text-xs uppercase tracking-[0.3em] mb-6 text-[#e6e1d6]/70">Premium Yame Matcha</span>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl leading-none mb-8 font-light">
+                Discover the<br><em class="text-[#88a05e]">Purest Umami</em>
+            </h1>
+            <p class="text-lg md:text-xl font-light max-w-lg mb-10 leading-relaxed text-[#e6e1d6]/90">
+                Elevate your daily ritual with rare, award-winning matcha cultivated in the prestigious tea mountains of South Japan.
+            </p>
+            <div class="flex gap-6 items-center">
+                <a href="#shop" class="uppercase text-xs tracking-widest border border-[#e6e1d6] px-8 py-4 hover:bg-[#e6e1d6] hover:text-[#0c0c0c] transition-colors duration-300">
+                    Experience Yame Matcha
+                </a>
+            </div>
+        </div>
     </header>
 
-    <div class="hero">
-        <div class="hero-content">
-            <h1>Discover the Purest Umami</h1>
-            <p>Elevate your daily ritual with rare, award-winning matcha cultivated in the prestigious tea mountains of South Japan.</p>
-            <a href="#shop" class="btn">Experience Yame Matcha</a>
+    <!-- Marquee Banner (Inspired by Marumi's scrolling tags) -->
+    <div class="marquee-container py-4 text-sm uppercase tracking-widest font-light text-[#e6e1d6]/80">
+        <div class="marquee-content">
+            Single-Origin Yame ✦ 100% Transparent Origin ✦ Shade-Grown ✦ Rich Volcanic Soil ✦ Award-Winning ✦ Nutty Umami ✦ Single-Origin Yame ✦ 100% Transparent Origin ✦ Shade-Grown ✦ Rich Volcanic Soil ✦ Award-Winning ✦ Nutty Umami ✦
         </div>
     </div>
 
-    <section id="origin">
-        <h2>What makes us different: 100% Transparent Origin</h2>
-        <div class="grid-2">
-            <div>
-                <p>We believe you should know exactly where your tea comes from. Our matcha is sourced exclusively from <strong>Yame</strong>, a mountainous region located in Fukuoka Prefecture on Japan's Kyushu island.</p>
-                <p>While Yame produces less than 3% of Japan's total tea, it takes home a disproportionate share of the country's top tea awards. This exceptional quality is born from the region's unique geography:</p>
-                <ul style="padding-left: 20px; color: var(--text-light);">
-                    <li><strong>Mountain Elevation:</strong> Farms sit between 200-600m, concentrating nutrients.</li>
-                    <li><strong>Morning River Fog:</strong> Natural shading forces high amino acid production giving its nutty umami flavour.</li>
-                    <li><strong>Rich Volcanic Soil:</strong> Perfect for sweet, non-astringent cultivars like Okumidori and Saemidori.</li>
-                </ul>
+    <!-- Section 1: Transparent Origin (Split Layout) -->
+    <section class="px-6 md:px-16 py-24 md:py-40 max-w-[1600px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+            
+            <div class="md:col-span-5 flex flex-col justify-center">
+                <div class="text-xs uppercase tracking-widest text-[#e6e1d6]/50 mb-8 border-b border-[#e6e1d6]/20 pb-4 inline-block w-max">Origin</div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight font-light">
+                    What makes us <em class="text-[#88a05e]">different</em>
+                </h2>
+                <div class="space-y-6 text-[#e6e1d6]/80 font-light leading-relaxed">
+                    <p class="text-xl serif">We believe you should know exactly where your tea comes from.</p>
+                    <p>Our matcha is sourced exclusively from <strong>Yame</strong>, a mountainous region located in Fukuoka Prefecture on Japan's Kyushu island.</p>
+                    <p>While Yame produces less than 3% of Japan's total tea, it takes home a disproportionate share of the country's top tea awards. This exceptional quality is born from the region's unique geography:</p>
+                    <ul class="pt-4 space-y-4">
+                        <li class="flex items-start"><span class="mr-4 text-[#88a05e]">✦</span> <span><strong>Mountain Elevation:</strong> Farms sit between 200-600m, concentrating nutrients.</span></li>
+                        <li class="flex items-start"><span class="mr-4 text-[#88a05e]">✦</span> <span><strong>Morning River Fog:</strong> Natural shading forces high amino acid production.</span></li>
+                        <li class="flex items-start"><span class="mr-4 text-[#88a05e]">✦</span> <span><strong>Rich Volcanic Soil:</strong> Perfect for sweet, non-astringent cultivars.</span></li>
+                    </ul>
+                </div>
             </div>
-            <div>
-                <img src="https://www.crossroadfukuoka.jp/storage/tourism_attractions/12916/responsive_images/flpM5ESQiUNy4aNcei20kYsOGTrhEdK45gdIVARS__1673_1113.jpg" alt="Yame Tea Fields" class="content-image">
+
+            <div class="md:col-span-7 overflow-hidden">
+                <img src="https://www.crossroadfukuoka.jp/storage/tourism_attractions/12916/responsive_images/flpM5ESQiUNy4aNcei20kYsOGTrhEdK45gdIVARS__1673_1113.jpg" alt="Yame Tea Fields" class="w-full h-auto object-cover img-reveal aspect-[4/3]">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 2: Wellness Powerhouse (Numbered Features similar to Marumi's Menu section) -->
+    <section class="bg-[#111111] py-24 md:py-40 px-6 md:px-16">
+        <div class="max-w-[1600px] mx-auto">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
+                <div>
+                    <div class="text-xs uppercase tracking-widest text-[#e6e1d6]/50 mb-8 border-b border-[#e6e1d6]/20 pb-4 inline-block w-max">Benefits</div>
+                    <h2 class="text-4xl md:text-6xl font-light">A Wellness <br><em>Powerhouse</em></h2>
+                </div>
+                <p class="max-w-md text-[#e6e1d6]/70 font-light leading-relaxed">
+                    Because our Yame matcha is ground from entire shaded tea leaves, you ingest 100% of the plant's nutrients—delivering benefits that brewed green tea simply cannot match.
+                </p>
+            </div>
+
+            <!-- Grid of benefits -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 border-t border-[#e6e1d6]/10 pt-16">
+                
+                <article class="group">
+                    <span class="text-3xl serif italic text-[#88a05e] mb-6 block">01</span>
+                    <h3 class="text-2xl mb-4 serif">Sustained Energy &amp; Calm Focus</h3>
+                    <p class="text-sm text-[#e6e1d6]/60 font-light leading-relaxed">Rich in L-theanine, promoting relaxed alertness without the jittery spike and crash of coffee.</p>
+                </article>
+
+                <article class="group">
+                    <span class="text-3xl serif italic text-[#88a05e] mb-6 block">02</span>
+                    <h3 class="text-2xl mb-4 serif">Powerful Antioxidants</h3>
+                    <p class="text-sm text-[#e6e1d6]/60 font-light leading-relaxed">Packed with EGCG to neutralize free radicals, slow cellular aging, and support glowing skin.</p>
+                </article>
+
+                <article class="group">
+                    <span class="text-3xl serif italic text-[#88a05e] mb-6 block">03</span>
+                    <h3 class="text-2xl mb-4 serif">Cardiovascular Health</h3>
+                    <p class="text-sm text-[#e6e1d6]/60 font-light leading-relaxed">Catechins protect against the oxidation of LDL cholesterol and help regulate blood pressure.</p>
+                </article>
+
+                <article class="group">
+                    <span class="text-3xl serif italic text-[#88a05e] mb-6 block">04</span>
+                    <h3 class="text-2xl mb-4 serif">Metabolism &amp; Detox</h3>
+                    <p class="text-sm text-[#e6e1d6]/60 font-light leading-relaxed">Intensive shade-growing packs the leaves with chlorophyll, acting as a natural detoxifier.</p>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <section id="health" style="background-color: white;">
-        <h2>A Wellness Powerhouse</h2>
-        <div class="grid-2" style="margin-bottom: 4rem;">
-            <div>
-                <img src="https://www.yame-tea.jp/images/material/Matcha00026.jpeg" alt="Yame Matcha Powder" class="content-image">
-            </div>
-            <div>
-                <p>Because our Yame matcha is ground from entire shaded tea leaves, you ingest 100% of the plant's nutrients—delivering benefits that brewed green tea simply cannot match.</p>
-                <span class="kanji-motif">和敬</span>
-            </div>
-        </div>
-
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <h3>Sustained Energy & Calm Focus</h3>
-                <p>Rich in L-theanine, promoting relaxed alertness without the jittery spike and crash of coffee.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>Powerful Antioxidants</h3>
-                <p>Packed with EGCG to neutralize free radicals, slow cellular aging, and support glowing skin.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>Cardiovascular Health</h3>
-                <p>Catechins protect against the oxidation of LDL cholesterol and help regulate blood pressure.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>Metabolism & Detox</h3>
-                <p>Intensive shade-growing packs the leaves with chlorophyll, acting as a natural detoxifier.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="comparison">
-        <h2>Why Choose Yame Matcha?</h2>
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Feature</th>
-                    <th>Standard Supermarket Matcha</th>
-                    <th>Authentic Yame Matcha</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Origin</strong></td>
-                    <td>Blended from multiple, undisclosed lowland regions.</td>
-                    <td class="highlight-col">Single-origin: Yame, Fukuoka Prefecture, Japan.</td>
-                </tr>
-                <tr>
-                    <td><strong>Flavor Profile</strong></td>
-                    <td>Grassy, sharp, and highly astringent/bitter.</td>
-                    <td class="highlight-col">Creamy, round, long-finishing, and sweet (umami).</td>
-                </tr>
-                <tr>
-                    <td><strong>Color</strong></td>
-                    <td>Dull, yellowish-green.</td>
-                    <td class="highlight-col">Vibrant, jade green.</td>
-                </tr>
-                <tr>
-                    <td><strong>Cultivation</strong></td>
-                    <td>Grown in full sun, producing harsh bitterness.</td>
-                    <td class="highlight-col">Shade-grown in mountain fog to maximize L-theanine.</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Section 3: Comparison & CTA (Elegant Table replacement) -->
+    <section id="shop" class="px-6 md:px-16 py-24 md:py-40 max-w-[1200px] mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl mb-20 font-light">Why Choose <em class="text-[#88a05e]">Yame Matcha?</em></h2>
         
-        <div style="text-align: center; margin-top: 4rem;" id="shop">
-            <h3>Ready to experience the benefits of Matcha?</h3>
-            <p>Transform your mornings with the sweet, umami-rich flavor of authentic Fukuoka tea.</p>
-            <br>
-            <a href="#" class="btn">Shop Authentic Yame Matcha Now</a>
+        <!-- Elegant Comparison -->
+        <div class="text-left border-t border-[#e6e1d6]/20">
+            
+            <div class="grid grid-cols-3 gap-6 py-8 border-b border-[#e6e1d6]/20 text-xs uppercase tracking-widest text-[#e6e1d6]/50">
+                <div>Feature</div>
+                <div>Supermarket Matcha</div>
+                <div class="text-[#88a05e]">Authentic Yame</div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 py-8 border-b border-[#e6e1d6]/10 font-light">
+                <div class="serif text-xl">Origin</div>
+                <div class="text-[#e6e1d6]/60 text-sm">Blended from multiple, undisclosed lowland regions.</div>
+                <div class="text-[#e6e1d6] text-sm">Single-origin: Yame, Fukuoka Prefecture, Japan.</div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 py-8 border-b border-[#e6e1d6]/10 font-light">
+                <div class="serif text-xl">Flavor Profile</div>
+                <div class="text-[#e6e1d6]/60 text-sm">Grassy, sharp, and highly astringent/bitter.</div>
+                <div class="text-[#e6e1d6] text-sm">Creamy, round, long-finishing, and sweet (umami).</div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 py-8 border-b border-[#e6e1d6]/10 font-light">
+                <div class="serif text-xl">Color</div>
+                <div class="text-[#e6e1d6]/60 text-sm">Dull, yellowish-green.</div>
+                <div class="text-[#e6e1d6] text-sm">Vibrant, jade green.</div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 py-8 border-b border-[#e6e1d6]/10 font-light">
+                <div class="serif text-xl">Cultivation</div>
+                <div class="text-[#e6e1d6]/60 text-sm">Grown in full sun, producing harsh bitterness.</div>
+                <div class="text-[#e6e1d6] text-sm">Shade-grown in mountain fog to maximize L-theanine.</div>
+            </div>
+
+        </div>
+
+        <div class="mt-32">
+            <h3 class="text-3xl md:text-4xl serif mb-6">Ready to experience the benefits?</h3>
+            <p class="text-[#e6e1d6]/70 font-light mb-10 max-w-lg mx-auto">Transform your mornings with the sweet, umami-rich flavor of authentic Fukuoka tea.</p>
+            <a href="#" class="inline-block bg-[#e6e1d6] text-[#0c0c0c] uppercase tracking-widest text-sm px-10 py-5 hover:bg-[#88a05e] hover:text-white transition-colors duration-300">
+                Shop Authentic Yame Matcha
+            </a>
         </div>
     </section>
 
-    <footer>
-        <div class="kanji-motif" style="margin-bottom: 1rem;">和敬</div>
-        <p>&copy; 2026 Wakei Matcha. All Rights Reserved.</p>
-        <p style="font-size: 0.9em; opacity: 0.7;">Tokyo, Japan</p>
+    <!-- Footer (Multi-column minimalist) -->
+    <footer class="bg-black py-16 px-6 md:px-16 mt-20 border-t border-[#e6e1d6]/10">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            
+            <div>
+                <div class="text-4xl serif mb-4">和敬</div>
+                <p class="text-[#e6e1d6]/60 font-light text-sm max-w-xs">
+                    Elevating your daily ritual with rare, award-winning matcha from South Japan.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-[#e6e1d6]/50 mb-6">Location</h4>
+                <p class="text-[#e6e1d6]/80 font-light text-sm">
+                    Tokyo, Japan
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-[#e6e1d6]/50 mb-6">Contact & Social</h4>
+                <div class="flex flex-col space-y-2 text-[#e6e1d6]/80 font-light text-sm">
+                    <a href="#" class="hover:text-[#88a05e] transition-colors w-max">Instagram</a>
+                    <a href="#" class="hover:text-[#88a05e] transition-colors w-max">Contact Us</a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-[#e6e1d6]/40 uppercase tracking-widest border-t border-[#e6e1d6]/10 pt-8">
+            <span>© 2026 Wakei Matcha. All Rights Reserved.</span>
+            <span class="mt-4 md:mt-0">Tokyo, Japan</span>
+        </div>
     </footer>
 
 </body>
